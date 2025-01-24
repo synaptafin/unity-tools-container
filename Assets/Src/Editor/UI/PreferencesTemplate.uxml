@@ -1,0 +1,13 @@
+<engine:UXML 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:engine="UnityEngine.UIElements" 
+    xmlns:editor="UnityEditor.UIElements" 
+    noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+
+    <engine:Label class="preference__title" text="Selection Tracker" />
+    <engine:VisualElement class="preference__toggles" name="toggle-list-root"> 
+    </engine:VisualElement>
+    <engine:VisualElement>
+        <editor:EnumFlagsField name="state-filter"/>
+    </engine:VisualElement>
+</engine:UXML>

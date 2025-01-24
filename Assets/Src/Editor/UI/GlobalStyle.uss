@@ -1,0 +1,87 @@
+.tracker-root {
+    width: 100%;
+    height: 100%;
+}
+
+.entry__root {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+    -unity-text-align: middle-left;
+    margin: 2px;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 3px;
+}
+
+.entry__info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.entry__icon {
+    width: 16px;
+    min-width: 16px;
+    max-height: 16px;
+}
+
+.entry__label {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.entry__interaction {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 60px;
+}
+
+.entry__interaction > * {
+    margin-left: 2px;
+}
+
+.entry__popup {
+    display: flex;
+    justify-content: center;
+    background-color: green;
+    width: 100px;
+    height: 50px;
+}
+
+.preference__title {
+    font-size: 24px;
+    -unity-font-style: bold;
+}
+
+.preference__toggles > Toggle Label {
+    width: 50%;
+}
+
+.window__scroll-view {
+    height: 100%;
+}
+
+.window__search-toolbar {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    min-height: 19px;
+    width: auto;
+}
+
+.window__edited-box {
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2px;
+}
+

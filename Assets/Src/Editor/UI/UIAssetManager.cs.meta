@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dc1315a55d13a4b6ea986756a848c270
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - globalStyle: {fileID: 7433441132597879392, guid: bd1e770e29c054d02bf114a0a207818a, type: 3}
+  - preferenceTemplate: {fileID: 9197481963319205126, guid: ad6f6b4414d1b4bfebfdbb0a3b3e5f24, type: 3}
+  - TrackerTemplate: {fileID: 9197481963319205126, guid: e56e9581661f84aefa2eac586ec4551c, type: 3}
+  - entryTemplate: {fileID: 9197481963319205126, guid: accfc18fb0c894938b0c8f1a2e1187a0, type: 3}
+  - detailInfoTemplate: {fileID: 9197481963319205126, guid: 7e8d15f47b53d4e9e946e2e60231e88d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

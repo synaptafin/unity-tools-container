@@ -1,0 +1,13 @@
+{
+  "name": "com.synaptafin.selection-tracker",
+  "version": "0.0.1",
+  "displayName": "Selection Tracker",
+  "description": "A Unity Editor extension to track and navigate through your recently selected GameObjects and assets. Improving workflow efficiency.",
+  "unity": "6000.0",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "keywords": [
+    "editor extension",
+    "efficiency"
+  ]
+}
