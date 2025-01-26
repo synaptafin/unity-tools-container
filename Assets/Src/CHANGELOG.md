@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+### Fixed
+
+## [0.0.2] - 2025-01-26
+
+### Fixed
+
+- Entries data are cleared after domain reload
+
 ## [0.0.1] - 2025-01-24
 
 ### Added

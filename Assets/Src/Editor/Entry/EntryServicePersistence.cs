@@ -8,7 +8,7 @@ namespace Synaptafin.Editor.SelectionTracker {
   [FilePath("UserSettings/SelectionTracker.EntryManager.asset", FilePathAttribute.Location.ProjectFolder)]
   public class EntryServicePersistence : ScriptableSingleton<EntryServicePersistence> {
 
-    [SerializeField]
+    [SerializeReference]
     private List<IEntryService> _entryServices = new()
     {
       new HistoryService(),
@@ -19,12 +19,10 @@ namespace Synaptafin.Editor.SelectionTracker {
     private Dictionary<string, IEntryService> ServiceDict => _entryServices.ToDictionary(static service => service.GetType().Name);
 
     public List<IEntryService> EntryServices => _entryServices;
-
     public void OnEnable() {
       foreach (IEntryService entryService in EntryServices) {
         entryService?.OnUpdated.AddListener(OnServiceUpdate);
       }
-      Save(true);
     }
 
     public void RecordSelection(Entry selection) {
