@@ -8,7 +8,7 @@ namespace Synaptafin.Editor.SelectionTracker {
   [FilePath("UserSettings/SelectionTracker.EntryManager.asset", FilePathAttribute.Location.ProjectFolder)]
   public class EntryServicePersistence : ScriptableSingleton<EntryServicePersistence> {
 
-    [SerializeReference]
+    [SerializeField]
     private List<IEntryService> _entryServices = new()
     {
       new HistoryService(),
