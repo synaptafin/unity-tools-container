@@ -20,7 +20,7 @@ namespace Synaptafin.Editor.SelectionTracker {
 
     public void OnEnable() {
       PreferencePersistence.instance.onUpdated += PreferencesUpdatedCallback;
-      _entryService = EntryServicePersistence.instance.GetService<T>();
+      EntryServicePersistence.instance.TryGetService(out _entryService);
       _entryService?.OnUpdated.AddListener(EntryServiceUpdatedCallback);
     }
 
@@ -30,6 +30,9 @@ namespace Synaptafin.Editor.SelectionTracker {
     }
 
     public void CreateGUI() {
+      if (_entryService == null) {
+        return;
+      }
       VisualElement root = rootVisualElement;
       if (rootVisualTreeAsset == null) {
         rootVisualTreeAsset = UIAssetManager.instance.TrackerTemplate;

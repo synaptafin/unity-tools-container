@@ -23,6 +23,9 @@ namespace Synaptafin.Editor.SelectionTracker {
   [Serializable]
   public class HistoryService : IEntryService {
 
+    private static readonly Lazy<HistoryService> s_instance = new(static () => new());
+    public static HistoryService Instance => s_instance.Value;
+
     [SerializeField]
     private List<Entry> _entryList = new();
     public List<Entry> GetEntries => _entryList.AsEnumerable().Reverse().ToList();
@@ -33,6 +36,8 @@ namespace Synaptafin.Editor.SelectionTracker {
 
     public int SizeLimit { get; } = 100;
     private int _currentSelectionIndex = 0;
+
+    private HistoryService() { }
 
     public int CurrentSelectionIndex {
       get => _currentSelectionIndex;
@@ -111,6 +116,9 @@ namespace Synaptafin.Editor.SelectionTracker {
   [Serializable]
   public class MostVisitedService : IEntryService {
 
+    private static readonly Lazy<MostVisitedService> s_instance = new(static () => new());
+    public static MostVisitedService Instance => s_instance.Value;
+
     [SerializeField]
     private List<Entry> _slidingWindow = new();
     public List<Entry> GetEntries => _slidingWindow
@@ -126,7 +134,7 @@ namespace Synaptafin.Editor.SelectionTracker {
 
     public int CurrentSelectionIndex { get; set; }
 
-    public MostVisitedService() { }
+    private MostVisitedService() { }
 
     public void RecordEntry(Entry entry) {
       if (entry == null) {
@@ -153,6 +161,9 @@ namespace Synaptafin.Editor.SelectionTracker {
   [Serializable]
   public class FavoritesService : IEntryService {
 
+    private static readonly Lazy<FavoritesService> s_instance = new(static () => new());
+    public static FavoritesService Instance => s_instance.Value;
+
     private enum SizeOverFlowChoice {
       Ignore,
       RemoveOldest,
@@ -166,6 +177,8 @@ namespace Synaptafin.Editor.SelectionTracker {
     public UnityEvent OnUpdated { get; } = new();
     public int CurrentSelectionIndex { get; set; }
     public int SizeLimit { get; } = 200;
+
+    private FavoritesService() { }
 
     public void RecordEntry(Entry entry, bool isFavorite) {
       if (entry == null) {

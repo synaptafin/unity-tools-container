@@ -1,25 +1,30 @@
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 namespace Synaptafin.Editor.SelectionTracker {
 
-  [FilePath("UserSettings/SelectionTracker.EntryManager.asset", FilePathAttribute.Location.ProjectFolder)]
+  [FilePath("UserSettings/SelectionTracker.asset", FilePathAttribute.Location.ProjectFolder)]
   public class EntryServicePersistence : ScriptableSingleton<EntryServicePersistence> {
 
-    [SerializeField]
-    private List<IEntryService> _entryServices = new()
-    {
-      new HistoryService(),
-      new MostVisitedService(),
-      new FavoritesService(),
-    };
+    [SerializeReference]
+    private List<IEntryService> _entryServices;
 
     private Dictionary<string, IEntryService> ServiceDict => _entryServices.ToDictionary(static service => service.GetType().Name);
 
     public List<IEntryService> EntryServices => _entryServices;
+
     public void OnEnable() {
+      if (!TryGetService(out HistoryService _)) {
+        _entryServices.Add(HistoryService.Instance);
+      }
+      if (!TryGetService(out MostVisitedService _)) {
+        _entryServices.Add(MostVisitedService.Instance);
+      }
+      if (!TryGetService(out FavoritesService _)) {
+        _entryServices.Add(FavoritesService.Instance);
+      }
       foreach (IEntryService entryService in EntryServices) {
         entryService?.OnUpdated.AddListener(OnServiceUpdate);
       }
@@ -55,8 +60,13 @@ namespace Synaptafin.Editor.SelectionTracker {
       }
     }
 
-    public T GetService<T>() where T : IEntryService {
-      return (T)ServiceDict[typeof(T).Name];
+    public bool TryGetService<T>(out T service) where T : IEntryService {
+      if (ServiceDict.TryGetValue(typeof(T).Name, out IEntryService entryService)) {
+        service = (T)entryService;
+        return true;
+      }
+      service = default;
+      return false;
     }
 
     private void OnServiceUpdate() {

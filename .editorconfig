@@ -6,7 +6,6 @@ indent_size = 2
 tab_width = 2
 insert_final_newline = true
 charset = utf-8
-trim_trailing_whitespace = true
 
 [*{_AssemblyInfo.cs,.notsupported.cs,AsmOffsets.cs}]
 generated_code = true
