@@ -1,0 +1,6 @@
+[submodule "Assets/SelectionTracker"]
+	path = Assets/SelectionTracker
+	url = git@github.com:enigmaiiiiiiii/unity-selection-tracker.git
+[submodule "Assets/MiniEditorExtensions"]
+	path = Assets/MiniEditorExtensions
+	url = git@github.com:enigmaiiiiiiii/unity-mini-editor-extensions.git
