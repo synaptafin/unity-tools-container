@@ -71,13 +71,21 @@ dotnet_naming_style.static_prefix_style.required_prefix = s_
 dotnet_naming_style.static_prefix_style.capitalization = camel_case
 
 # internal and private fields should be _camelCase
-dotnet_naming_rule.camel_case_for_private_internal_fields.severity = suggestion
-dotnet_naming_rule.camel_case_for_private_internal_fields.symbols  = private_internal_fields
-dotnet_naming_rule.camel_case_for_private_internal_fields.style    = camel_case_underscore_style
-dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
-dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal
+dotnet_naming_rule.camel_case_for_protected_private_internal_fields.severity = suggestion
+dotnet_naming_rule.camel_case_for_protected_private_internal_fields.symbols  = protected_private_internal_fields
+dotnet_naming_rule.camel_case_for_protected_private_internal_fields.style    = camel_case_underscore_style
+dotnet_naming_symbols.protected_private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.protected_private_internal_fields.applicable_accessibilities = protected, private, internal
 dotnet_naming_style.camel_case_underscore_style.required_prefix = _
 dotnet_naming_style.camel_case_underscore_style.capitalization = camel_case
+
+# public fields should be camelCase
+dotnet_naming_rule.camel_case_for_public_fields.severity = suggestion
+dotnet_naming_rule.camel_case_for_public_fields.symbols  = public_fields
+dotnet_naming_rule.camel_case_for_public_fields.style = camel_case_style
+dotnet_naming_symbols.public_fields.applicable_kinds = field
+dotnet_naming_symbols.public_fields.applicable_accessibilities = public
+dotnet_naming_style.camel_case_style.capitalization = camel_case
 
 # Code style defaults
 csharp_using_directive_placement = outside_namespace:suggestion
