@@ -9,24 +9,24 @@ Select `Window` -> `Package Manager` -> `install package from git URL...` and pa
 1. install selection tracker
 
 ```sh
-git@github.com:enigmaiiiiiiii/unity-selection-tracker.git
+git@github.com:synaptafin/unity-selection-tracker.git
 ```
 
 with https
 
 ```sh
-https://github.com/enigmaiiiiiiii/unity-selection-tracker.git
+https://github.com/synaptafin/unity-selection-tracker.git
 ```
 
 2. install mini editor extensions 
 
 ```sh
-git@github.com:enigmaiiiiiiii/unity-mini-editor-extensions.git
+git@github.com:synaptafin/unity-mini-editor-extensions.git
 ```
 
 with https
 
 ```sh
-https://github.com/enigmaiiiiiiii/unity-mini-editor-extensions.git
+https://github.com/synaptafin/unity-mini-editor-extensions.git
 ```
 
