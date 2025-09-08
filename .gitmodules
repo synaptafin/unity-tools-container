@@ -1,6 +1,9 @@
 [submodule "Assets/SelectionTracker"]
-	path = Assets/SelectionTracker
+	path = Assets/tools/SelectionTracker
 	url = git@github.com:enigmaiiiiiiii/unity-selection-tracker.git
 [submodule "Assets/MiniEditorExtensions"]
-	path = Assets/MiniEditorExtensions
+	path = Assets/tools/MiniEditorExtensions
 	url = git@github.com:enigmaiiiiiiii/unity-mini-editor-extensions.git
+[submodule "Assets/tools/unity-play-mode-console"]
+	path = Assets/tools/unity-play-mode-console
+	url = git@github.com:synaptafin/unity-play-mode-console.git
