@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+
+namespace Synaptafin.Editor.SelectionTracker {
+
+  [FilePath("UserSettings/SelectionTracker.asset", FilePathAttribute.Location.ProjectFolder)]
+  public class EntryServicePersistence : ScriptableSingleton<EntryServicePersistence> {
+
+    [SerializeReference]
+    private List<IEntryService> _entryServices = new() {
+      new MostVisitedService(),
+      new SceneComponentsService(),
+      new FavoritesService(),
+      new SceneComponentsService()
+    };
+    private Dictionary<string, IEntryService> ServiceDict => _entryServices.ToDictionary(static service => service.GetType().Name);
+
+    public void OnEnable() {
+
+      foreach (IEntryService entryService in _entryServices) {
+        entryService?.OnUpdated.AddListener(OnServiceUpdate);
+      }
+    }
+
+    public T GetService<T>() where T : IEntryService {
+      return (T)_entryServices.FirstOrDefault(static s => s.GetType() == typeof(T));
+    }
+
+    public void RecordSelection(Entry selection) {
+      GetService<HistoryService>()?.RecordEntry(selection);
+      GetService<MostVisitedService>()?.RecordEntry(selection);
+      Save(true);
+    }
+
+    public void RecordComponent(Entry entry) {
+      GetService<SceneComponentsService>()?.RecordEntry(entry);
+    }
+
+    public void RecordFavorites(Entry entry, bool isFavorite = false) {
+      GetService<FavoritesService>()?.RecordEntry(entry, isFavorite);
+      Save(true);
+    }
+
+    public void RemoveFromFavorites(Entry entry) {
+      GetService<FavoritesService>()?.RemoveEntry(entry);
+      Save(true);
+    }
+
+    public Entry JumpToPreviousSelection() {
+      return GetService<HistoryService>()?.PreviousSelection();
+    }
+
+    public Entry JumpToNextSelection() {
+      return GetService<HistoryService>()?.NextSelection();
+    }
+
+    public void OnDisable() {
+      foreach (IEntryService entryService in _entryServices) {
+        entryService?.OnUpdated.RemoveListener(OnServiceUpdate);
+      }
+    }
+
+    public void Save() {
+      Save(true);
+    }
+
+    private void OnServiceUpdate() {
+      Save(true);
+    }
+  }
+}
+
