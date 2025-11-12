@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Synaptafin.SelectionTracker.csproj" />
+  <Project Path="Synaptafin.PlayModeConsole.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>
